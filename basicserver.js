@@ -10,12 +10,15 @@ app.get('/about', (req, res) => {
     res.send('Hello this is my about page!')
 })
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000')
-})
+
 
 mongoose.connect('mongodb+srv://Shantanu993:12345678Admin@cluster0.rdogfmh.mongodb.net/Node-API?retryWrites=true&w=majority')
-  .then(() => console.log('DB Connected!'))
+  .then(() => {
+    console.log('DB Connected!')
+    app.listen(3000, () => {
+      console.log('Server is running on port 3000')
+    })
+  })
   .catch((err) => {
     console.log("Error");
   })
