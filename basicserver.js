@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Products = require('./models/productModels')
+const [MONGO_URL] = require('dotenv').config()
 
 const app = express()
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://admin:1234Admin@restful-crud-api.jdzq9x5.mongodb.net/NODE-API?retryWrites=true&w=majority')
+
+mongoose.connect(MONGO_URL)
   .then(() => {
     console.log('DB Connected!')
     app.listen(3000, () => {
