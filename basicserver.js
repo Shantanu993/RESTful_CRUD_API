@@ -5,6 +5,17 @@ const Products = require('./models/productModels')
 const app = express()
 app.use(express.json())
 
+mongoose.connect('mongodb+srv://admin:1234Admin@restful-crud-api.jdzq9x5.mongodb.net/NODE-API?retryWrites=true&w=majority')
+  .then(() => {
+    console.log('DB Connected!')
+    app.listen(3000, () => {
+      console.log('Server is running on port 3000')
+    })
+  })
+  .catch((err) => {
+    console.error("Error in starting server:", err);
+  });
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
@@ -23,14 +34,3 @@ app.post('/product', async(req, res) => {
   }
 })
 
-
-mongoose.connect('mongodb+srv://Shantanu993:12345678Admin@cluster0.rdogfmh.mongodb.net/Node-API?retryWrites=true&w=majority')
-  .then(() => {
-    console.log('DB Connected!')
-    app.listen(3000, () => {
-      console.log('Server is running on port 3000')
-    })
-  })
-  .catch((err) => {
-    console.log("Error");
-  })
