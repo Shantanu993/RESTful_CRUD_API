@@ -2,10 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const Products = require('./models/productModels')
 const [MONGO_URL] = require('dotenv').config()
+const {readFileSync, writeFileSync} = require('fs')
 
 const app = express()
 app.use(express.json())
 
+const newfile = writeFileSync('./sample.txt','utf-8', 'hello this is created using write file sync') 
 
 mongoose.connect(MONGO_URL)
   .then(() => {
